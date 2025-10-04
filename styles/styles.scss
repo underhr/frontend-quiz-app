@@ -1,0 +1,345 @@
+$grey500: #626C7F;
+$grey50: #F4F6FA;
+$blue950: #2D3949;
+$blue900: #313E51;
+$blue850: #3B4D66;
+$blue500: #306AFF;
+$blue300: #ABC1E1;
+$blue100: #EDF1F9;
+$blue50: #EBF0FF;
+$green500: #2FD887;
+$green100: #E0FDEF;
+$purple600: #A729F5;
+$purple100: #F6E7FF;
+$orange400: #FF7E35;
+$orange50: #FFF5ED;
+$red500: #EE5454;
+
+@mixin flex($justify, $align, $direction) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+    flex-direction: $direction;
+}
+@font-face {
+    font-family: rubik;
+    src: url('../assets/fonts/Rubik-VariableFont_wght.ttf');
+}
+@font-face {
+    font-family: rubik-italic;
+    src: url('../assets/fonts/Rubik-Italic-VariableFont_wght.ttf');
+}
+
+* {
+    margin: 0;
+    font-family: rubik;
+    box-sizing: border-box;
+}
+
+//entire page
+#main {
+    background-color: $grey50;
+    background-image: url('../assets/images/pattern-background-desktop-light.svg');
+    background-repeat: round;
+    min-height: 100vh;
+    width: 100vw;
+    padding: 40px 0px;
+    @include flex(center, center, column);
+}
+
+//image icons with backgrounds
+%icon-base {
+    @include flex(center, center, row);
+    height: 56px;
+    width: 56px;
+    border-radius: 8px;
+}
+
+.html-icon { @extend %icon-base; background-color: $orange50; }
+.css-icon { @extend %icon-base; background-color: $green100; }
+.javascript-icon { @extend %icon-base; background-color: $blue50; }
+.accessibility-icon { @extend %icon-base; background-color: $purple100; }
+  
+
+//quiz subject and dark mode switch
+#top-bar {
+    width: 1157px;
+    @include flex(flex-end, center, row);
+    margin-bottom: 50px;
+    #dark-light {
+        @include flex(center, center, row);
+        gap: 16px;
+        #dark-light-switch {
+            cursor: pointer;
+            background-color: $purple600;
+            height: 28px;
+            width: 48px;
+            border-radius: 28px;
+            @include flex(center, flex-start, column);
+            #dark-light-switch-thumb {
+                margin: 0px 4px;
+                height: 20px;
+                width: 20px;
+                background-color: white;
+                border-radius: 50%;
+            }
+        }
+    }
+}
+
+.section {
+    @include flex(center, center, row);
+    gap: 128px;
+    color: $blue900;
+    .top-left-flex {
+        align-self: flex-start;
+        position: relative;
+        h1 {
+            font-weight: 200;
+            font-size: 64px;
+            margin-bottom: 48px;
+            .bold {
+                font-weight: 500;
+            }
+        }
+        h3 {
+            color: $grey500;
+            font-family: rubik-italic;
+            font-weight: 200;
+            font-size: 20px;
+            line-height: 150%;
+        }
+        &#question {
+            width: 465px;
+        }
+        p {
+            font-size: 36px;
+            line-height: 120%;
+            margin-top: 24px;
+            margin-bottom: 184px;
+        }
+        #progress-bar {
+            background-color: white;
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            border-radius: 8px;
+            @include flex(flex-start, center, row);
+            #progress {
+                background-color: $purple600;
+                width: 0; //progress bar
+                height: 8px;
+                margin: 4px;
+                border-radius: 8px;
+            }
+        }
+    }
+    .bottom-right-flex {
+        //add quiz title for completed
+        width: 564px;
+        .buttons {
+            @include flex(center, center, column);
+            gap: 16px;
+            button {
+                @include flex(flex-start, center, row);
+                width: 100%;
+                color: $blue900;
+                gap: 32px;
+                padding: 24px;
+                text-align: left;
+                background-color: white;
+                border: none;
+                border-radius: 24px;
+                box-shadow: 0px 16px 40px rgba(49, 62, 81, 0.14);
+                font-size: 28px;
+                font-weight: 450;
+                cursor: pointer;
+                box-sizing: border-box;
+                .letter {
+                    @include flex(center, center, row);
+                    background-color: $grey50;
+                    height: 56px;
+                    width: 56px;
+                    border-radius: 8px;
+                    color: $grey500;
+                }
+            }
+            #submit {
+                background-color: $purple100;
+                color: white;
+                text-align: center;
+                @include flex(center, center, row);
+                margin-top: 16px;
+                &:hover {
+                    background-color: $purple600;
+                    transition: background-color 1s ease;
+                }
+            }
+            #noAnswerErr {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                color: $red500;
+                font-size: 24px;
+            }
+            #play-again {
+                background-color: $purple600;
+                color: white;
+                text-align: center;
+                @include flex(center, center, row);
+                margin-top: 16px;
+            }
+        }
+
+        #score-card {
+            @include flex(center, center, column);
+            background-color: white;
+            padding: 48px;
+            border-radius: 24px;
+            font-size: 24px;
+            line-height: 150%;
+            #score {
+                font-size: 144px;
+                line-height: 100%;
+                margin-top: 40px;
+                margin-bottom: 16px;
+            }
+            #outOf {
+                color: $grey500;
+            }
+        }
+    }
+}
+
+.quiz-title {
+    @include flex(flex-end, center, row);
+    font-size: 28px;
+    gap: 24px;
+    /*.subject-icon {
+        .subject-icon-img {
+
+        }
+    }*/
+    .quiz-title-txt {
+        color: $blue900;
+    }
+}
+
+@media only screen and (max-width: 1200px) { // 768px
+    #main {
+        background-repeat: no-repeat;
+        justify-content: flex-start;
+    }
+    #top-bar {
+        width: 564px;
+    }
+    .section {
+        display: flex;
+        flex-direction: column;
+        gap: 64px;
+        .top-left-flex {
+            &#question {
+                width: 564px;
+            }
+            h1 {
+                margin-bottom: 16px !important;
+            }
+            p {
+                margin-bottom: 40px;
+            }
+        }
+        .bottom-right-flex {
+            width: 564px;
+            button {
+                display: flex;
+            }
+            #submit {
+                background-color: $purple600 !important;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    #top-bar {
+        width: calc(100vw - 48px);
+    }
+    .section {
+        gap: 40px;
+        width: calc(100vw - 48px);
+        .top-left-flex {
+            h1 {
+                font-size: 40px;
+            }
+            h3 {
+                font-size: 14px;
+            }
+            p {
+                font-size: 20px;
+                margin-bottom: 24px;
+            }
+            #progress-bar {
+                width: calc(100vw - 48px);
+            }
+        }
+        .bottom-right-flex {
+            width: 100%;
+            .buttons {
+                button {
+                    font-size: 18px;
+                }
+            }
+        }
+    }
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+.hidden {
+    display: none !important;
+}
+
+.resultImg {
+    margin-left: auto;
+}
+
+.submitBg {
+    background-color: $purple600 !important;
+}
+
+button.selected {
+    border: 3px solid $purple600 !important;
+  
+    .letter {
+      background-color: $purple600 !important;
+      color: white !important;
+    }
+}
+  
+button.correct {
+    border: 3px solid $green500 !important;
+  
+    .letter {
+      background-color: $green500 !important;
+      color: white !important;
+    }
+}
+  
+button.incorrect {
+    border: 3px solid $red500 !important;
+  
+    .letter {
+      background-color: $red500 !important;
+      color: white !important;
+    }
+}
+
+button:disabled {
+    color: inherit;
+    opacity: 1;
+    -webkit-text-fill-color: inherit;
+}
+
+.whiteTxt {
+    color: white !important;
+}

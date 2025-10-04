@@ -5,49 +5,137 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link rel="stylesheet" type="text/css" href="styles/styles.css">
   
   <title>Frontend Mentor | Frontend quiz app</title>
 </head>
 <body>
+  <main id="main">
 
-  <div id="dark-light">
-    <img src="assets/images/icon-sun-light.svg" alt="Light Mode Symbol">
-    <div id="dark-light-switch">
-      <div id="dark-light-switch-thumb"></div>
+    <div id="top-bar">
+      <div class="quiz-title hidden">
+        <div class="subject-icon">
+          <img src="assets/images/icon-html.svg" class="subject-icon-img">
+        </div>
+        <span class="quiz-title-txt">Title</span>
+      </div>
+      <div id="dark-light"> <!--Dark mode switch-->
+        <img src="assets/images/icon-sun-dark.svg" alt="Light Mode Symbol" id="darkModeSun">
+        <div id="dark-light-switch">
+          <div id="dark-light-switch-thumb"></div>
+        </div>
+        <img src="assets/images/icon-moon-dark.svg" alt="Dark Mode Symbol" id="darkModeMoon">
+      </div>
     </div>
-  </div>
-  <!-- Quiz menu start -->
 
-  <h1>Welcome to the Frontend Quiz!</h1>
-  Pick a subject to get started.
-  <button class="subject" id="html">HTML</button>
-  <button class="subject" id="css">CSS</button>
-  <button class="subject" id="javascript">JavaScript</button>
-  <button class="subject" id="accessibility">Accessibility</button>
+    <div id="menu" class="section">
+      <div class="top-left-flex">
+        <h1>Welcome to the <br><span class="bold">Frontend Quiz!</span></h1>
+        <h3>Pick a subject to get started.</h3>
+      </div>
 
-  <!-- Quiz menu end -->
+      <div class="bottom-right-flex">
+        <div id="subjects" class="buttons">
+          <button class="subject" id="html">
+            <div class="img-icon html-icon">
+              <img src="assets/images/icon-html.svg" alt="HTML icon">
+            </div>
+            HTML
+          </button>
+  
+          <button class="subject" id="css">
+            <div class="img-icon css-icon">
+              <img src="assets/images/icon-css.svg" alt="CSS icon">
+            </div>
+            CSS
+          </button>
+  
+          <button class="subject" id="javascript">
+            <div class="img-icon javascript-icon">
+              <img src="assets/images/icon-js.svg" alt="JavaScript icon">
+            </div>
+            JavaScript
+          </button>
+  
+          <button class="subject" id="accessibility">
+            <div class="img-icon accessibility-icon">
+              <img src="assets/images/icon-accessibility.svg" alt="Accessibility icon">
+            </div>
+            Accessibility
+          </button>
+        </div>
+      </div>
+    </div>
 
-  <!-- Quiz question start -->
+    <div id="quiz" class="section hidden">
+      <div id="question" class="top-left-flex">
+        <h3>Question <span id="question-number">6</span> of 10</h3>
 
-  Question <!-- number --> of 10
+        <p>Which of these color contrast ratios defines the minimum WCAG 2.1 Level AA requirement for normal text?</p>
 
-  A
-  B
-  C
-  D
+        <div id="progress-bar">
+          <div id="progress"></div>
+        </div>
+      </div>
 
-  Submit answer
+      <div class="bottom-right-flex">
+        <div id="options" class="buttons">
+          <button id="A">
+            <div class="letter">A</div>
+            <span class="answer">Answer A</span>
+            <img src="" alt="Correct/incorrect icon" class="resultImg hidden">
+          </button>
+  
+          <button id="B">
+            <div class="letter">B</div>
+            <span class="answer">Answer B</span>
+            <img src="./assets/images/icon-correct.svg" alt="Correct/incorrect icon" class="resultImg hidden">
+          </button>
+  
+          <button id="C">
+            <div class="letter">C</div>
+            <span class="answer">Answer C</span>
+            <img src="./assets/images/icon-correct.svg" alt="Correct/incorrect icon" class="resultImg hidden">
+          </button>
+  
+          <button id="D">
+            <div class="letter">D</div>
+            <span class="answer">Answer D</span>
+            <img src="./assets/images/icon-correct.svg" alt="Correct/incorrect icon" class="resultImg hidden">
+          </button>
+  
+          <button id="submit" class="purple">Submit Answer</button>
+  
+          <span id="noAnswerErr" class="hidden"><img src="assets/images/icon-error.svg" alt="Error icon">Please select an answer</span>
+        </div>
+      </div>
+    </div>
 
-  <!-- Quiz question end -->
+    <div id="completed" class="section hidden">
+      <div class="top-left-flex">
+        <h1>Quiz completed<br><span class="bold">You scored...</span></h1>
+      </div>
 
-  <!-- Quiz completed start -->
+      <div class="bottom-right-flex">
+        <div id="score-card">
+          <div class="quiz-title">
+            <div class="subject-icon">
+              <img src="assets/images/icon-html.svg" class="subject-icon-img">
+            </div>
+            <span class="quiz-title-txt score">Title</span>
+          </div>
 
-  Quiz completed
-  You scored...
+          <span id="score"></span>
+          <span id="outOf">out of 10</span>
+        </div>
+        <div class="buttons">
+          <button id="play-again" class="purple">Play Again</button>
+        </div>
+      </div>
+    </div>
 
-  <!-- score --> out of 10
-
-  <!-- Quiz completed end -->
-
+  </main>
+<script src="scripts/quiz.js"></script>
+<script src="scripts/darkMode.js"></script>
 </body>
 </html>
