@@ -27,6 +27,7 @@ for (let subject of subjects) {
 }
 
 function loadQuiz(quizType) {
+    score = 0;
     let questionIndex = 0;
     let selectedAnswer = null;
     let showingResults = false;
@@ -38,20 +39,22 @@ function loadQuiz(quizType) {
         if (!selectedQuiz) return;
 
         const totalQuestions = selectedQuiz.questions.length;
+        const letterOptions = ['A', 'B', 'C', 'D'];
 
         // set header
         titleTxt.forEach(el => el.innerText = selectedQuiz.title);
-        subjectIconImg.forEach(el => el.src =  selectedQuiz.icon);
-        subjectIconImg.forEach(el => el.classList.add(`${selectedQuiz.title.toLowerCase()}-icon`));
-
-        const letterOptions = ['A', 'B', 'C', 'D'];
+        subjectIconImg.forEach(el => {
+            el.className = 'subject-icon-img';
+            el.src =  selectedQuiz.icon;
+            el.classList.add(`${selectedQuiz.title.toLowerCase()}-icon`);
+        });
 
         function renderQuestion() {
             const questionObj = selectedQuiz.questions[questionIndex];
-
+            const noAnswerErr = document.getElementById('noAnswerErr');
             question.innerText = questionObj.question;
             document.getElementById('question-number').innerText = questionIndex + 1
-            progress.style.width = ((questionIndex + 1) / totalQuestions) * 100 + '%';
+            progress.style.width = ((questionIndex) / totalQuestions) * 100 + '%';
 
             selectedAnswer = null;
             showingResults = false;
@@ -74,6 +77,7 @@ function loadQuiz(quizType) {
                     letterOptions.forEach(l => {
                         const btn = document.getElementById(l);
                         btn.classList.remove('selected');
+                        noAnswerErr.classList.add('hidden');
                     });
                     selectedAnswer = answerSpan.innerText;
                     button.classList.add('selected');
@@ -87,7 +91,6 @@ function loadQuiz(quizType) {
                         document.getElementById('noAnswerErr').classList.remove('hidden');
                         return;
                     }
-                    document.getElementById('noAnswerErr').classList.add('hidden');
                     const correctAnswer = questionObj.answer;
                     letterOptions.forEach(letter => {
                         const btn = document.getElementById(letter);
