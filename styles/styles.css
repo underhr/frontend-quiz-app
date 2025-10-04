@@ -288,6 +288,9 @@
     gap: 40px;
     width: calc(100vw - 48px);
   }
+  .section .top-left-flex#question {
+    width: calc(100vw - 48px);
+  }
   .section .top-left-flex h1 {
     font-size: 40px;
   }
