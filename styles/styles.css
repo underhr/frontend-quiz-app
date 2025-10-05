@@ -311,6 +311,9 @@
   .section .bottom-right-flex .buttons button {
     font-size: 18px;
   }
+  .quiz-title {
+    font-size: 18px;
+  }
 }
 .hidden {
   display: none !important;
